@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
-import org.springframework.http.MediaType;
+//import org.springframework.http.MediaType;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -38,7 +38,7 @@ public class EjemploGlobalFilter implements GlobalFilter, Ordered {
 			});
 			
 			exchange.getResponse().getCookies().add("color", ResponseCookie.from("color", "rojo").build());
-			exchange.getResponse().getHeaders().setContentType(MediaType.TEXT_PLAIN);
+			//exchange.getResponse().getHeaders().setContentType(MediaType.TEXT_PLAIN);
 		})); //Que continúe con la ejecución de la cadena de filtros
 	}
 
