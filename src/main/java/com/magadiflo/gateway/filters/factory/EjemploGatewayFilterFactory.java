@@ -15,7 +15,9 @@ import reactor.core.publisher.Mono;
  * Si queremos que el nombre de la clase sea detectado en automático como un
  * filtro, debemos agregarle el sufijo: <cualquier_nombre_>GatewayFilterFactory,
  * caso contrario se le podría dar cualquier otro nombre, pero se tendría que
- * hacer configuraciones en el application.properties
+ * hacer configuraciones en el application.properties. De todos modos en el
+ * application.properties debemos configurarlo con el nombre: Ejemplo, sin el
+ * sufijo
  * 
  * Creamos una clase de configuración anidada dentro de la misma clase. Esa
  * clase podríamos haberla creado en un paquete distinto, pero para evitar estar

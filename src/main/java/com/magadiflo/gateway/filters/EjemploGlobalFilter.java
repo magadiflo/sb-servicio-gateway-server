@@ -43,9 +43,14 @@ public class EjemploGlobalFilter implements GlobalFilter, Ordered {
 	}
 
 	// Le dará una precedencia
+	// -1, Cuando tiene un orden de alta prioridad, el response es solo de lectura,
+	// por lo tanto en este punto ...getHeaders().add("token",... daría un error ya que
+	// no podríamos guardar datos en la cabecera
+	
+	//Podría ser cualquier mayor que cero para evitar dicho error
 	@Override
 	public int getOrder() {
-		return -1;
+		return 1;
 	}	
 	
 
