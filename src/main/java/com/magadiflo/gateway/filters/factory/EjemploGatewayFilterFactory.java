@@ -1,10 +1,13 @@
 package com.magadiflo.gateway.filters.factory;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
+//import org.springframework.cloud.gateway.filter.OrderedGatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
@@ -34,6 +37,10 @@ public class EjemploGatewayFilterFactory
 		super(Configuracion.class);
 	}
 
+	// 1° argumento la expresión lamba y 2° argumento el número de orden del filtro
+	// Esto solo en caso de que queramos ordenarlo, sino solo returnar el lambda
+	// return new OrderedGatewayFilter((exchange, chain) -> { /* codigo */ }, 2);
+
 	@Override
 	public GatewayFilter apply(Configuracion config) {
 		return (exchange, chain) -> {
@@ -48,6 +55,23 @@ public class EjemploGatewayFilterFactory
 				LOG.info("Ejecutando POST Gategay Filter Factory: {}", config.mensaje);
 			}));
 		};
+	}
+
+	// Ejemplo que le damos a esta clase filtro, ya que en el application.yaml
+	// estaba como: Ejemplo
+	@Override
+	public String name() {
+		return "EjemploCookie";
+	}
+
+	// Le damos el orden de los argumentos ya que en el application.yaml se define:
+	// Ejemplo=Hola mi mensaje personalizado, usuario, MartinDiaz, donde:
+	// Hola mi mens.... "mensaje"
+	// usuario "cookieNombre"
+	// MartinDiaz "cookieValor"
+	@Override
+	public List<String> shortcutFieldOrder() {
+		return Arrays.asList("mensaje", "cookieNombre", "cookieValor");
 	}
 
 	public static class Configuracion {
