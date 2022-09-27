@@ -19,3 +19,6 @@ spring:
         filters:
           - StripPrefix=2 
 ```
+
+# [Usando jjwt](https://github.com/jwtk/jjwt)
+
