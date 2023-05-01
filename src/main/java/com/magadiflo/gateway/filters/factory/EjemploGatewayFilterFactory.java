@@ -37,10 +37,21 @@ public class EjemploGatewayFilterFactory
 		super(Configuracion.class);
 	}
 
-	// 1° argumento la expresión lamba y 2° argumento el número de orden del filtro
-	// Esto solo en caso de que queramos ordenarlo, sino solo returnar el lambda
-	// return new OrderedGatewayFilter((exchange, chain) -> { /* codigo */ }, 2);
-
+	// **** Ordenando Filtro ****
+	/**
+	 * Dentro del método apply(...), lo único que haríamos sería retornar la clase
+	 * new OrderedGatewayFilter(...) y dentro de él, nuestra expresión lamba,
+	 * quedando de esta manera:
+	 * 
+	 * return new OrderedGatewayFilter((exchange, chain) -> { // código }, 2);
+	 * 
+	 * Donde: 1° argumento es la expresión lamba y 2° argumento el número de orden
+	 * del filtro.
+	 * 
+	 * Ahora, esto solo en caso de que queramos ordenarlo, sino solo retornaremos el
+	 * lambda.
+	 * 
+	 */
 	@Override
 	public GatewayFilter apply(Configuracion config) {
 		return (exchange, chain) -> {
